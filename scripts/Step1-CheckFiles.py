@@ -12,7 +12,7 @@ import warnings
 
 # Step 1: Check package and update if needed
 print("[Step1-CheckFiles][1/3] Checking python environment and version...")
-assert sys.version >= '3.7', "[Step1-CheckFiles][1/3] Python version not compatible. v3.7 is required. Abort."
+assert int(sys.version.split(".")[0]) >= 3 and int(sys.version.split(".")[1]) >= 7, "[Step1-CheckFiles][1/3] Python version not compatible. v3.7 is required. Abort."
 
 print("[Step1-CheckFiles][1/3] Checking primary location...")
 assert 'scripts/Step1-CheckFiles.py' not in os.getcwd(), \
