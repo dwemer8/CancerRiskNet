@@ -246,16 +246,17 @@ def load_data_settings(args):
         SETTINGS.ICD10_MAPPER_NAME, sep='\t', header=None,
         names=['code', 'description', 'chapter', 'chapter_name', 'block_name', 'block']
     )
-    CODEDF = CODEDF.append(pd.read_csv(
+    CODEDF_8 = pd.read_csv(
         SETTINGS.ICD8_MAPPER_NAME, sep='\t', header=None,
         names=['code', 'description', 'chapter', 'chapter_name', 'block_name', 'block']
-    ))
+    )
+    CODEDF = pd.concat([CODEDF, CODEDF_8], ignore_index=True)
     CODEDF_9 = pd.read_csv(
         SETTINGS.ICD9_MAPPER_NAME, sep='\t', header=0, names=['code_long', 'description', 'shorter description', 'NA']
     )
     CODEDF_9['code'] = [c[:3] for c in CODEDF_9['code_long']]
     CODEDF_9.groupby('code').first()
-    CODEDF_w_9 = CODEDF.append(CODEDF_9)
+    CODEDF_w_9 = pd.concat([CODEDF, CODEDF_9])
     CODE2DESCRIPTION = (dict(zip(CODEDF_w_9.code, CODEDF_w_9.description)))
     return {'CODE2DESCRIPTION': CODE2DESCRIPTION, 'SETTINGS': SETTINGS, 'CODEDF_w_9': CODEDF_w_9, 'CODEDF': CODEDF}
 

@@ -26,5 +26,5 @@
     "use_known_risk_factors": [true, false],
     "data_setting_path": ["data/settings_sample_data.yaml"]
   },
-  "available_gpus": [2]
+  "available_gpus": [1]
 }
