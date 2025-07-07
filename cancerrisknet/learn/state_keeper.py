@@ -5,6 +5,8 @@ import collections
 import hashlib
 import copy
 
+import cancerrisknet
+
 OPTIMIZER_PATH = '{}_{}_optim.pt'
 MODEL_PATH = '{}_{}_model.pt'
 PARAM_PATH = '{}_{}_param.p'
@@ -108,7 +110,7 @@ class StateKeeper:
             # Load model
             model_path = os.path.join(self.args.model_dir, MODEL_PATH.format(model_name, identifier))
             try:
-                models[model_name] = torch.load(model_path, map_location=self.args.device)
+                models[model_name] = torch.load(model_path, map_location=self.args.device, weights_only=False)
             except Exception:
                 raise Exception(
                     ERROR_MSG.format(model_path))
