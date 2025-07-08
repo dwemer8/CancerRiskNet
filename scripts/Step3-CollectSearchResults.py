@@ -268,6 +268,7 @@ if __name__ == "__main__":
     summary = []
     args_dict = {}
 
+    sorted_key_args=None
     if not args.skip_loading:  # TODO: why do we want to skip loading?
         print("[Step3-CollectSearchResults][2/3] Start to load *.results files...")
         for job in job_ids:

@@ -12,7 +12,7 @@ import warnings
 
 # Step 1: Check package and update if needed
 print("[Step1-CheckFiles][1/3] Checking python environment and version...")
-assert sys.version >= '3.7', "[Step1-CheckFiles][1/3] Python version not compatible. v3.7 is required. Abort."
+assert int(sys.version.split(".")[0]) >= 3 and int(sys.version.split(".")[1]) >= 7, "[Step1-CheckFiles][1/3] Python version not compatible. v3.7 is required. Abort."
 
 print("[Step1-CheckFiles][1/3] Checking primary location...")
 assert 'scripts/Step1-CheckFiles.py' not in os.getcwd(), \
@@ -20,13 +20,13 @@ assert 'scripts/Step1-CheckFiles.py' not in os.getcwd(), \
 
 print("[Step1-CheckFiles][1/3] Checking package dependencies...")
 try:
-    pkgs = open('requirements.txt', 'r').readlines()
+    pkgs = open('requirements_for_python_3_10.txt', 'r').readlines()
     pkgs = [pkg.rstrip('\b') for pkg in pkgs]
     pkg_resources.require(pkgs)
     print("[Step1-CheckFiles][1/3] All required packages match the desired version.")
 except Exception as e:
     print("[Step1-CheckFiles][1/3] One or more packages does not match the desired version. Do `pip install -r "
-          "requirements.txt` and then try again.")
+          "requirements_for_python_3_10.txt` and then try again.")
 
 print("[Step1-CheckFiles][1/3] Checking CancerRiskNet core framework...")
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
