@@ -42,7 +42,7 @@ def get_model_by_name(name, args):
 def load_model(path, args):
     print('\nLoading model from [%s]...' % path)
 
-    model = torch.load(path)
+    model = torch.load(path, weights_only=False)
     if isinstance(model, dict):
         model = model[args.model_name]
 
