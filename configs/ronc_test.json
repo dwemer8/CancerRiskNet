@@ -1,6 +1,6 @@
 {
   "search_space": {
-    "metadata":["data/sample_diag_data.json"],
+    "metadata":["data/ronc_test.json"],
     "train":[true],
     "dev":[true],
     "test":[false],
@@ -24,7 +24,7 @@
     "eval_auprc": [true],
     "eval_c_index": [true],
     "use_known_risk_factors": [false],
-    "data_setting_path": ["data/settings_sample_data.yaml"],
+    "data_setting_path": ["data/ronc_test.yaml"],
     "month_endpoints": [[12, 24, 36, 48, 60]],
     "tuning_metric": ["36month_auprc"]
   },
